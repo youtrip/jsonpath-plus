@@ -165,6 +165,13 @@ def jsonpath(obj, expr, result_type='VALUE', debug=0, use_eval=True):
                 walk(loc, x, obj, path, f06)
             elif isinstance(obj, dict) and loc in obj:
                 trace(x, obj[loc], s(path, loc))
+            elif isinstance(obj, dict) and loc not in obj:
+                obj[loc] = ""
+                trace(x, obj[loc], s(path, loc))
+            elif isinstance(obj, list) and len(obj) == 0:
+                increaseDict = {}
+                obj.append(increaseDict)
+                trace(x, obj[int(loc)], s(path, loc))
             elif isinstance(obj, list) and isint(loc):
                 iloc = int(loc)
                 if debug: print("----->", iloc, len(obj))
