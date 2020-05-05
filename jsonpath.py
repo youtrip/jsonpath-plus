@@ -11,12 +11,15 @@ and Perl version by Kate Rhodes at:
         http://github.com/masukomi/jsonpath-perl/tree/master
 
 Python3 compatibily by Per J. Sandstrom
+
+fork by Youtrip(base version 0.82)
+https://github.com/youtrip/jsonpath-plus
 """
 from __future__ import print_function
 
 __author__ = "Phil Budne"
 __revision__ = "$Revision: 1.17 $"
-__version__ = '0.82'
+__version__ = '0.83'
 
 #	Copyright (c) 2007 Stefan Goessner (goessner.net)
 #       Copyright (c) 2008 Kate Rhodes (masukomi.org)
@@ -165,6 +168,7 @@ def jsonpath(obj, expr, result_type='VALUE', debug=0, use_eval=True):
                 walk(loc, x, obj, path, f06)
             elif isinstance(obj, dict) and loc in obj:
                 trace(x, obj[loc], s(path, loc))
+            # felix start
             elif isinstance(obj, dict) and loc not in obj:
                 obj[loc] = ""
                 trace(x, obj[loc], s(path, loc))
@@ -172,6 +176,7 @@ def jsonpath(obj, expr, result_type='VALUE', debug=0, use_eval=True):
                 increaseDict = {}
                 obj.append(increaseDict)
                 trace(x, obj[int(loc)], s(path, loc))
+            # felix ending
             elif isinstance(obj, list) and isint(loc):
                 iloc = int(loc)
                 if debug: print("----->", iloc, len(obj))
