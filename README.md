@@ -8,3 +8,6 @@ jsonpath-plus是基于PIP jsonpath v0.82的改进加强版本。之前的版本�
 
 ### Readme (English)
 Jsonpath-plus is an improved and enhanced version of PIP jsonpath v0.82. Previous versions of Pandas tocsv or tosql were used to read irregular json structures of nodes, resulting in inconsistent output lists, which interfered with the next step of data processing. This version adds a judgment to the core file that if a node is missing, an empty string or dictionary will be output by default to ensure that the list output is of the same length.
+
+## 安装(install)
+python3 setup.py install
